@@ -14,9 +14,7 @@ const App = () => {
   return (
     <>
       <div class="flex justify-between items-center w-full dark:bg-white bg-black">
-        <div
-          className="h-[38px] w-72 m-6 justify-around items-center hidden md:flex                                                                                                 "
-        >
+        <div className="h-[38px] w-72 m-6 justify-around items-center hidden md:flex                                                                                                 ">
           <div className="bg-green-500 rounded-full w-4 h-4 cursor-pointer"></div>
           <div className="bg-red-500 rounded-full w-4 h-4 cursor-pointer"></div>
           <div className="bg-yellow-400 rounded-full w-4 h-4 cursor-pointer"></div>
@@ -28,7 +26,7 @@ const App = () => {
           {darkTheme ? <MdOutlineDarkMode /> : <MdLightMode />}
         </button>
       </div>
-      <main className="flex flex-col items-center justify-start pt-56 w-full min-h-screen bg-gradient-to-b from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900 text-slate-900 dark:text-slate-200">
+      <main className="flex flex-col items-center justify-center w-full min-h-screen bg-gradient-to-b from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900 text-slate-900 dark:text-slate-200">
         <div className="grid place-items-center gap-8 m-8">
           <CustomForm />
         </div>

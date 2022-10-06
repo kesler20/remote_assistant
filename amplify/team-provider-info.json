@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-sofiasilentui-dev-04537-authRole",
+      "UnauthRoleArn": "arn:aws:iam::565226596788:role/amplify-sofiasilentui-dev-04537-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::565226596788:role/amplify-sofiasilentui-dev-04537-authRole",
+      "Region": "eu-west-2",
+      "DeploymentBucketName": "amplify-sofiasilentui-dev-04537-deployment",
+      "UnauthRoleName": "amplify-sofiasilentui-dev-04537-unauthRole",
+      "StackName": "amplify-sofiasilentui-dev-04537",
+      "StackId": "arn:aws:cloudformation:eu-west-2:565226596788:stack/amplify-sofiasilentui-dev-04537/fcb26fe0-45d0-11ed-b4c2-0a1401fba3ac",
+      "AmplifyAppId": "d1dzwa9miblp8v"
+    }
+  }
+}
