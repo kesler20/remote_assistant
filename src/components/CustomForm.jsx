@@ -1,8 +1,17 @@
 // library imports
 import CustomButton from "./CustomButton";
 import { ArrowCircleRightIcon } from "@heroicons/react/solid";
+import { useEffect } from "react";
 
 const Form = ({ thing, handleInput, handleSubmit }) => {
+  useEffect(() => {
+    const form = document.querySelector("input");
+    form.focus();
+    return () => {
+      form.removeEventListener("focus");
+    };
+  }, []);
+
   return (
     <>
       <h1 className="text-3xl sm:text-6xl font-bold text-center">
