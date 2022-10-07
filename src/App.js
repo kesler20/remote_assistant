@@ -5,12 +5,12 @@ import { MdLightMode } from "react-icons/md";
 
 const App = () => {
   const [darkTheme, setDarkTheme] = useState(false);
-
   const toggleTheme = () => {
     const htmlDocument = document.querySelector("html");
     htmlDocument.classList.toggle("dark", darkTheme);
     setDarkTheme(!darkTheme);
   };
+
   return (
     <>
       <div class="flex justify-between items-center w-full dark:bg-white bg-black">
