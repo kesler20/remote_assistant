@@ -2,10 +2,11 @@
 import CustomButton from "./CustomButton";
 import { ArrowCircleRightIcon } from "@heroicons/react/solid";
 import { useState, useEffect } from "react";
+import MQTTApi from "../apis/MQTTApi";
 
 const Form = () => {
   const [command, setCommand] = useState("");
-
+  const [clientCommand, setClientCommand] = useState("");
   useEffect(() => {
     const form = document.querySelector("input");
     form.focus();
@@ -14,20 +15,34 @@ const Form = () => {
     };
   }, []);
 
-  const handleClick = () => {
-    fetch("http://127.0.0.1:5000", {
-      method: "POST",
-      body: JSON.stringify(command),
-    })
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
+  useEffect(() => {
+    if (clientCommand !== "") {
+      const topic = "sofia-silent";
+      const clientID = "sofia-silent-mqtt-client";
 
-    setCommand("");
-  };
+      const mqttApi = new MQTTApi(clientID);
+
+      // connect client to ws
+      mqttApi.onConnect(() => {
+        // subscribe to the topic
+        mqttApi.subscribeClient(topic, () => {
+          console.log("connected to sofia-silent");
+        });
+
+        // log any messages
+        mqttApi.onMessage((msg) => {
+          console.log(msg);
+        });
+
+        // publish new commands when the command state is updated
+        mqttApi.publishMessage(topic, command);
+        console.log(`${clientID} publish ${command}`);
+      }, []);
+
+      // unsubscribe the client when the component unmounts
+      return mqttApi.unsubscribeClient(topic);
+    }
+  }, [clientCommand]);
 
   return (
     <>
@@ -49,7 +64,7 @@ const Form = () => {
         />
         <button
           className="bg-inherit rounded-md font-sans text-slate-800  py-2 pr-6 focus:outline-none focus:text-teal-600 hover:text-teal-600"
-          onClick={handleClick}
+          onClick={() => setClientCommand(command)}
         >
           <ArrowCircleRightIcon className="h-12 w-12 pointer-events-none" />
         </button>
