@@ -163,7 +163,7 @@ export default class MQTTApi {
       }
     });
   }
-  
+
   unsubscribeClient(topic) {
     this.client.unsubscribe(topic, () => {
       console.log("unsubscribed");
