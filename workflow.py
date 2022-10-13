@@ -9,13 +9,12 @@ def initialize_amplify_application(categoryID: int, credentials_location=None):
 
     # where <category> is one of: notifications, api, auth, custom, storage, analytics, function, geo, hosting, interactions, predictions, xr
     categories = ["auth", "storage", "storage", "hosting"]
-    categories = categories[categoryID]
+    category = categories[int(categoryID)]
     os.system(
         r"start excel {}/new_user_credentials.csv".format(credentials_location))
     os.system("amplify init")
-    for category in categories:
-        os.system(f"amplify add {category}")
-        os.system("amplify status")
+    os.system(f"amplify add {category}")
+    os.system("amplify status")
 
     os.system("amplify push")
     os.system("amplify publish")
