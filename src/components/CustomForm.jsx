@@ -7,6 +7,7 @@ import MQTTApi from "../apis/MQTTApi";
 const Form = () => {
   const [command, setCommand] = useState("");
   const [clientCommand, setClientCommand] = useState("");
+
   useEffect(() => {
     const form = document.querySelector("input");
     form.focus();
@@ -14,6 +15,12 @@ const Form = () => {
       form.removeEventListener("focus", () => {});
     };
   }, []);
+
+  useEffect(() => {
+    if (clientCommand !== "") {
+      postCommand(command);
+    }
+  }, [clientCommand]);
 
   useEffect(() => {
     if (clientCommand !== "") {
@@ -43,6 +50,28 @@ const Form = () => {
       return mqttApi.unsubscribeClient(topic);
     }
   }, [clientCommand]);
+
+  /**
+   * this is a function called when the clientCommand state changes
+   * @param {*} command - this is a string containing a command to sent to the sofia silent backend
+   */
+  const postCommand = async (command) => {
+    const response = await fetch(`process.env.REACT_APP_BACKEND_URL_DEV`, {
+      method: "POST",
+      body: JSON.stringify(command),
+    });
+    response
+      .then((res) => {
+        return res.then((res) => {
+          if (res.ok) {
+            console.log(res);
+          }
+        });
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
 
   return (
     <>
