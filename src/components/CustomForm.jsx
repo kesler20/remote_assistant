@@ -57,13 +57,10 @@ const Form = () => {
    * @param {*} command - this is a string containing a command to sent to the sofia silent backend
    */
   const postCommand = async (command) => {
-    const response = await fetch(
-      `${process.env.REACT_APP_BACKEND_URL_DEV}`,
-      {
-        method: "POST",
-        body: JSON.stringify(`${command}`),
-      }
-    );
+    const response = await fetch(`${process.env.REACT_APP_BACKEND_URL_DEV}`, {
+      method: "POST",
+      body: JSON.stringify(`${command}`),
+    });
     response
       .then((res) => {
         return res.json((res) => {
