@@ -12,6 +12,6 @@ const CustomButton = ({ text }) => {
       <CheckCircleIcon className="pointer-events-none w-12 h-12" />
     </button>
   );
-  };
+};
 
 export default CustomButton;
