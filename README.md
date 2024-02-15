@@ -1,3 +1,10 @@
-# Sofia Silent UI
+# Remote Assistant
 
-this is just so that commands can be sent from everywher ethe front end build can be found [here](http://sofiasilentui-20221007004808-hostingbucket-dev.s3-website.eu-west-2.amazonaws.com/)
+The CSS was copied from an existing design.
+
+The following is the white mode
+![image](https://github.com/kesler20/remote_assistant/assets/72452741/23b5dab0-f4d7-4b6d-95a8-6b22b8d415c6)
+
+The dark mode:
+![image](https://github.com/kesler20/remote_assistant/assets/72452741/bfeb5bfd-1c5d-40b4-8a4f-05729fdb2a0d)
+
